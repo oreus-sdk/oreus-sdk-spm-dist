@@ -1,0 +1,165 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "VoxChatSDK",
+    "printedName": "VoxChatSDK",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VoxChatSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VoxCore",
+        "printedName": "VoxCore",
+        "declKind": "Import",
+        "moduleName": "VoxChatSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "VoxChatSDK",
+        "printedName": "VoxChatSDK",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "version",
+            "printedName": "version",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10VoxChatSDKAAO7versionSSvpZ",
+            "mangledName": "$s10VoxChatSDKAAO7versionSSvpZ",
+            "moduleName": "VoxChatSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10VoxChatSDKAAO7versionSSvgZ",
+                "mangledName": "$s10VoxChatSDKAAO7versionSSvgZ",
+                "moduleName": "VoxChatSDK",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "initialize",
+            "printedName": "initialize(configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VoxConfig",
+                "printedName": "VoxCore.VoxConfig",
+                "usr": "s:7VoxCore0A6ConfigV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10VoxChatSDKAAO10initialize13configurationy0A4Core0A6ConfigV_tFZ",
+            "mangledName": "$s10VoxChatSDKAAO10initialize13configurationy0A4Core0A6ConfigV_tFZ",
+            "moduleName": "VoxChatSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "reset",
+            "printedName": "reset()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10VoxChatSDKAAO5resetyyFZ",
+            "mangledName": "$s10VoxChatSDKAAO5resetyyFZ",
+            "moduleName": "VoxChatSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:10VoxChatSDKAAO",
+        "mangledName": "$s10VoxChatSDKAAO",
+        "moduleName": "VoxChatSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/aurelienchevalier\/Git\/Dev-id\/oreus-ios-v2\/VoxChatSDK\/VoxChatSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1771,
+      "length": 7,
+      "value": "\"0.1.0\""
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Xcode / SPM local state — jamais publié
+.swiftpm/
+.DS_Store
