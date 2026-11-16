@@ -21,7 +21,9 @@ Caractéristiques des artefacts :
 
 ## Intégration (app hôte tierce)
 
-Dans Xcode : **File > Add Package Dependencies…**, puis pointer sur ce dépôt.
+Dans Xcode : **File > Add Package Dependencies…**, puis pointer sur
+`https://github.com/oreus-sdk/oreus-sdk-spm-dist.git` (dépôt public, tag
+`sdk-v0.1.0`).
 Les deux produits sont proposés ; importer les deux (contrat d'imports duaux) :
 
 ```swift

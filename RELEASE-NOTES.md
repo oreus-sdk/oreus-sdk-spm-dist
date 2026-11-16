@@ -54,14 +54,12 @@ tout peut casser sans incrément majeur).
 
 ## Consommation
 
-Le dépôt de distribution est hébergé chez Infomaniak (dépôt git dédié
-`oreus-sdk-spm-dist`, même serveur que l'app hôte) en attendant le repo
-officiel — aucun impact : SPM résout tout dépôt git accessible (Q#57).
+Le dépôt de distribution est hébergé sur GitHub (`oreus-sdk/oreus-sdk-spm-dist`,
+dépôt public) — Q#57 : dépôt dédié au dépôt de distribution, tags `sdk-vX.Y.Z`.
 
 ```swift
 // Package.swift de l'hôte, ou File > Add Package Dependencies… (tag sdk-v0.1.0)
-// URL HTTPS du dépôt : consignée à la publication (CT#75, lecture anonyme)
-.package(url: "<URL-HTTPS-infomaniak>", from: "0.1.0")
+.package(url: "https://github.com/oreus-sdk/oreus-sdk-spm-dist.git", from: "0.1.0")
 ```
 
 ```swift
