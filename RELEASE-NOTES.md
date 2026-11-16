@@ -54,9 +54,14 @@ tout peut casser sans incrément majeur).
 
 ## Consommation
 
+Le dépôt de distribution est hébergé chez Infomaniak (dépôt git dédié
+`oreus-sdk-spm-dist`, même serveur que l'app hôte) en attendant le repo
+officiel — aucun impact : SPM résout tout dépôt git accessible (Q#57).
+
 ```swift
 // Package.swift de l'hôte, ou File > Add Package Dependencies… (tag sdk-v0.1.0)
-.package(url: "https://github.com/<org>/vox-chat-sdk-spm.git", from: "0.1.0")
+// URL HTTPS du dépôt : consignée à la publication (CT#75, lecture anonyme)
+.package(url: "<URL-HTTPS-infomaniak>", from: "0.1.0")
 ```
 
 ```swift
