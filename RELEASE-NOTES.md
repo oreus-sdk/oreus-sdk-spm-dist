@@ -1,51 +1,50 @@
-# Release sdk-v0.1.0 — 16/11/2026
+# Release 0.1.0 — 16/11/2026
 
-Première publication du dépôt de distribution SPM du SDK Vox Chat iOS (ST#69, Phase 4).
+Première publication du dépôt de distribution SPM du SDK Vox Chat iOS.
 
 ## Artefacts
 
-| Artefact                | Empreinte sha256 (agrégat trié des fichiers du manifest) |
-|-------------------------|----------------------------------------------------------|
-| `VoxChatSDK.xcframework`| 30 fichiers — manifest complet dans `spm-dist-manifest.sha256` |
-| `VoxCore.xcframework`   | 116 fichiers — manifest complet dans `spm-dist-manifest.sha256` |
+| Artefact                | Empreintes sha256                        |
+|-------------------------|------------------------------------------|
+| `VoxChatSDK.xcframework`| 30 fichiers — voir `manifest.sha256`     |
+| `VoxCore.xcframework`   | 116 fichiers — voir `manifest.sha256`    |
 
-Empreintes complètes : `build/ct71-e3/spm-dist-manifest.sha256` (149 fichiers,
-revalidés bit-à-bit le 16/11/2026 avant commit — 148 fichiers hors état local
-`.swiftpm/`, zéro différence). Le manifest consigne le sha256 de chaque fichier
-de chaque `.xcframework` ; les empreintes par artefact sont recomputables par :
+Empreintes complètes : `manifest.sha256` (149 fichiers), revalidé bit-à-bit
+le 16/11/2026 avant publication. Vérification par tout consommateur :
 
 ```sh
-cd <copie locale du dépôt>   # au tag sdk-v0.1.0
-grep -v swiftpm <(find VoxCore.xcframework VoxChatSDK.xcframework Package.swift README.md -type f | sort | xargs sha256sum) > manifest.sha256
+cd <copie locale du dépôt>   # au tag v0.1.0
 sha256sum -c manifest.sha256   # vérification fichier par fichier
 ```
 
 ## Contenu
 
 - `Package.swift` : deux `binaryTarget` (`VoxChatSDK` + `VoxCore`), **aucune
-  dépendance distante** (ADR#47 : NetworkClient incrustée statiquement, ADR#65).
+  dépendance distante** (NetworkClient incrustée statiquement dans le binaire).
 - `VoxChatSDK.xcframework` + `VoxCore.xcframework` : slices `ios-arm64` (device)
   et `ios-arm64_x86_64-simulator` (simulateur universel), min iOS 18.0,
   dSYMs release embarqués.
-- `README.md` : guide d'intégration (imports duaux, contrat ADR#48).
+- `README.md` : guide d'intégration (imports duaux).
+- `docs/` : documentation catalogue (démarrage, personnalisation, scopes,
+  erreurs).
 - `RELEASE-NOTES.md` + `manifest.sha256` : empreintes sha256 fichier par
-  fichier des artefacts publiés (revalidation : `sha256sum -c manifest.sha256`).
+  fichier des artefacts publiés.
 
 ## Changelog
 
-- Phase 4 complète : fabrication des XCFrameworks (ST#75/ST#136, ADR#50/56),
-  autosuffisance vérifiée `otool -L` (CT#69), transport des ressources
-  embarquées — bundles math/prism, lproj (CT#70, ST#133).
-- Phase 5 : variabilité host-scoped (ADR#60–92), 14 backports ST#242–256
-  (SSO durci 6aec2f69, SessionManager 2dbac82e, paywall fe7f3f77, etc.),
-  briques canoniques oreus-* (ST#257–282), sample app à jour.
-- Surface publique arrêtée ST#112 ; preuve de consommation client pur E3
-  reproduite 16/11/2026 (CT#71 étape 3) sur ces artefacts exacts.
+- Fabrication des XCFrameworks : slices device + simulateur universel,
+  autosuffisance vérifiée (`otool -L` : aucune dépendance dynamique externe),
+  ressources embarquées (bundles polices/prism, localisations fr/en).
+- Variabilité host-scoped des composants UI, briques canoniques publiques
+  (chat, agents, drive, files, collections, voxies, chat history, SSO, orbes).
+- Surface publique arrêtée ; preuve de consommation client pur reproduite
+  sur ces artefacts exacts (initialisation, imports duaux, façades, sonde
+  négative : les types internes ne sont pas résolubles côté consommateur).
 
 ## Breaking changes
 
-Aucun (première publication ; sémver 0.x.y pendant la phase, ADR#47 :
-tout peut casser sans incrément majeur).
+Aucun (première publication ; sémver 0.x.y : tout peut casser sans
+incrément majeur).
 
 ## Environnement minimum
 
@@ -55,10 +54,11 @@ tout peut casser sans incrément majeur).
 ## Consommation
 
 Le dépôt de distribution est hébergé sur GitHub (`oreus-sdk/oreus-sdk-spm-dist`,
-dépôt public) — Q#57 : dépôt dédié au dépôt de distribution, tags `sdk-vX.Y.Z`.
+dépôt public). Tags de distribution : `vX.Y.Z` (préfixe `v`, requis par la
+résolution SPM) ; les artefacts sont immuables une fois publiés.
 
 ```swift
-// Package.swift de l'hôte, ou File > Add Package Dependencies… (tag sdk-v0.1.0)
+// Package.swift de l'hôte, ou File > Add Package Dependencies…
 .package(url: "https://github.com/oreus-sdk/oreus-sdk-spm-dist.git", from: "0.1.0")
 ```
 
@@ -68,5 +68,4 @@ import VoxCore      // écrans SwiftUI et couche de délégation hôte
 ```
 
 Personnalisation côté client : couleur d'accent + famille de typographie
-uniquement (ADR#66). Tags de distribution : `sdk-vX.Y.Z` (préfixe `sdk-`,
-Q#57) ; artefacts immuables une fois publiés (ADR#47).
+uniquement.

@@ -15,7 +15,7 @@ Caractéristiques des artefacts :
 - Slices `ios-arm64` (device) et `ios-arm64_x86_64-simulator` (simulateur universel) ;
 - Minimum iOS 18.0 ;
 - dSYMs de release embarqués dans chaque `.xcframework` ;
-- `NetworkClient` incrustée statiquement dans `VoxCore` (ADR#65) : aucun dylib
+- `NetworkClient` incrustée statiquement dans `VoxCore` : aucun dylib
   séparé dans la distribution, aucun framework de dépendance à embarquer
   (fiabilisation des previews et de la consommation SPM).
 
@@ -53,6 +53,6 @@ police (faces Regular/Medium/Semibold/Bold embarquées par le client).
 ## Maintenance
 
 Ce dépôt est régénéré à chaque release : les deux `.xcframework` sont copiés
-depuis la sortie de fabrication (voir la procédure de consolidation des
-XCFrameworks, ADR#56) et le manifeste `Package.swift` ne change que si la
-structure des produits évolue. Ne jamais éditer un `.xcframework` à la main.
+depuis la sortie de fabrication du SDK et le manifeste `Package.swift` ne
+change que si la structure des produits évolue. Ne jamais éditer un
+`.xcframework` à la main.
