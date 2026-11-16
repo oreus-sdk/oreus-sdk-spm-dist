@@ -6,12 +6,19 @@ Première publication du dépôt de distribution SPM du SDK Vox Chat iOS (ST#69,
 
 | Artefact                | Empreinte sha256 (agrégat trié des fichiers du manifest) |
 |-------------------------|----------------------------------------------------------|
-| `VoxChatSDK.xcframework`| `eb068823…` (agrégat consigné dans `spm-dist-manifest.sha256`) |
-| `VoxCore.xcframework`   | `59891da8…` (agrégat consigné dans `spm-dist-manifest.sha256`) |
+| `VoxChatSDK.xcframework`| 30 fichiers — manifest complet dans `spm-dist-manifest.sha256` |
+| `VoxCore.xcframework`   | 116 fichiers — manifest complet dans `spm-dist-manifest.sha256` |
 
 Empreintes complètes : `build/ct71-e3/spm-dist-manifest.sha256` (149 fichiers,
 revalidés bit-à-bit le 16/11/2026 avant commit — 148 fichiers hors état local
-`.swiftpm/`, zéro différence).
+`.swiftpm/`, zéro différence). Le manifest consigne le sha256 de chaque fichier
+de chaque `.xcframework` ; les empreintes par artefact sont recomputables par :
+
+```sh
+cd <copie locale du dépôt>   # au tag sdk-v0.1.0
+grep -v swiftpm <(find VoxCore.xcframework VoxChatSDK.xcframework Package.swift README.md -type f | sort | xargs sha256sum) > manifest.sha256
+sha256sum -c manifest.sha256   # vérification fichier par fichier
+```
 
 ## Contenu
 
@@ -21,6 +28,8 @@ revalidés bit-à-bit le 16/11/2026 avant commit — 148 fichiers hors état loc
   et `ios-arm64_x86_64-simulator` (simulateur universel), min iOS 18.0,
   dSYMs release embarqués.
 - `README.md` : guide d'intégration (imports duaux, contrat ADR#48).
+- `RELEASE-NOTES.md` + `manifest.sha256` : empreintes sha256 fichier par
+  fichier des artefacts publiés (revalidation : `sha256sum -c manifest.sha256`).
 
 ## Changelog
 
